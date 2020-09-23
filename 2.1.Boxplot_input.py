@@ -22,7 +22,7 @@ for line in fp:
                 for i in range(20):
                         fpout[i].write(str('N')+'\t'+line_temp[i+1]+'\t'+g[i+1]+'\n')
 '''
-file_list=os.listdir('/home/hykim/Project/Cancer/Colon/RNA-seq/2.Beanplot')
+file_list=os.listdir('/home/')
 file_list_py= [file for file in file_list if file.endswith(".t.txt")]
 print file_list_py
 os.system('cat '+' '.join(map(lambda z:z, file_list_py))+' > plot_input2.txt')
