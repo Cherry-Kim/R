@@ -10,12 +10,12 @@ for fname in fp:
 
 '''
 ### STEP2. Construct PCA input ###
-GENE=['ENST00000307564','ENST00000356842','ENST00000290551','ENST00000273668','ENST00000376670','ENST00000339463','ENST00000331340','ENST00000346872','ENST00000357234','ENST00000268638','ENST00000302754','ENST00000264834','ENST00000248071','ENST00000341911','ENST00000435572','ENST00000526816','ENST00000294339','ENST00000342854','ENST00000378538','ENST00000595883']
+GENE=['ENST00000307564','ENST00000356842']
 
 TPM={}
 ID=[]
 fpout=open('PCA_input.txt','w')
-file_list=os.listdir('/home/hykim/Project/Cancer/Colon/RNA-seq/Quantified_Gene_Expression/')
+file_list=os.listdir('/home/RNA-seq/')
 T_list= [file for file in file_list if file.endswith("T.genes.results")]
 N_list= [file for file in file_list if file.endswith("N.genes.results")]
 LIST= T_list+N_list
