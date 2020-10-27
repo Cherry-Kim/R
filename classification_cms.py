@@ -12,13 +12,13 @@ for line in fp:
 		CMS[line_temp[1]].append(line_temp[0])
 
 for key,value in sorted(CMS.items()):
-#	print key,":",len(value)	#CMS4 [PM.AU.0035.T, PM.AU.0036.T]
+#	print key,":",len(value)	#CMS4 [sampl1, sample2]
 	fp1=open('Normalized.t.txt','r')
 	hd=fp1.readline()
 	g=hd[:-1].split('\t')
 	fpout=[open(g[i+1]+'_cms.txt','a')for i in range(0,20)]
 	for line in fp1:
-		line_temp1=line.split('\t')	#PM.AU.0035.T.genes.results
+		line_temp1=line.split('\t')	
 		for j in value:
 			if j in line_temp1[0]:
 				for i in range(20):
