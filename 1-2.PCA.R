@@ -55,6 +55,10 @@ rownames(norm.q.dat2) <-data2[-c(itr2),1]
 
 write.table(norm.q.dat2, 'Normalized2.txt', col.names=NA, row.names=T, quote=F, sep='\t')
 
+##A <- data2[.1]
+##B_tumor <- data2[,2:227]
+##C <- cbind(A,B)
+
 ### PCA ###
 output <- prcomp(t(norm.q.dat), scale = TRUE)
 pc1 <- predict(output)[, 'PC1']
