@@ -39,7 +39,6 @@ file_list_py= [file for file in file_list if file.endswith(".t.txt")]
 print file_list_py
 os.system('cat '+' '.join(map(lambda z:z, file_list_py))+' > plot_input2.txt')
 
-'''
 import seaborn as sns
 import pandas as pd
 
