@@ -1,0 +1,3 @@
+Hugo_Symbol	NCBI_Build	chromosome	Start_Position	End_position	Reference_Allele	Alternate	Tumor_Seq_Allele2	Protein_Change	Variant_Classification	Variant_Type	Tumor_Sample_Barcode	i_TumorVAF_WU	i_transcript_name
+GUCY2D	37	17	7906519	7906519	G	T	-	p.Ala52Ser	Missense_Mutation	SNP	IRD-0014	-	-
+TAL1	37	17	7906500	7906500	G	T	-	p.Ala52Ser	Missense_Mutation	SNP	IRD-0014	-	-
