@@ -4,7 +4,7 @@ fus.d <- read.csv("_fus.txt", header=T,stringsAsFactors=F,sep="\t")
 #1 chr16  1644997  GENE  chr5 54865793 GENE2
 
 colors <-  rainbow(10 , alpha=0.5 )
-plot( c(1:800), c(1:800), type="n", axes=FALSE, xlab="ADPKD2", ylab="")
+plot( c(1:800), c(1:800), type="n", axes=FALSE, xlab="", ylab="")
 circos(R=400, cir="hg19", type="chr", W=10, scale=FALSE, print.chr.lab=T)
 
 #labels
