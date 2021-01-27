@@ -1,5 +1,5 @@
 library(OmicCircos)
-fus.d <- read.csv("ADPKD2_fus.txt", header=T,stringsAsFactors=F,sep="\t")
+fus.d <- read.csv("_fus.txt", header=T,stringsAsFactors=F,sep="\t")
 #   chr1     pos1 gene1  chr2     pos2 gene2
 #1 chr16  1644997  GENE  chr5 54865793 GENE2
 
