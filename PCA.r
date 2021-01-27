@@ -22,8 +22,8 @@ colnames(norm.q.dat) <- colnames(in.dat)
 rownames(norm.q.dat) <- data[,1]
 write.table(norm.q.dat, 'Normalized.txt', col.names=NA, row.names=T, quote=F, sep='\t')
 
-a=t(data)
-write.table(a,"Normalized.t.txt", col.names=F,row.names=T,quote=F,sep="\t")
+a=t(norm.q.dat)
+write.table(a,"Normalized.t.txt", col.names=NA,row.names=T,quote=F,sep="\t")
 
 ########################################
 #data2 <- read.table("PCA_input_whole.txt", header=T, stringsAsFactors=F, sep="\t")
