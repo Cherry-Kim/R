@@ -3,7 +3,9 @@ library(pheatmap)
 
 data <- read.csv("Normalized.txt",header=T,stringsAsFactors=F,sep="\t")
 
+#data <- data[order(data$CMS, decreasing=F),]
 sub.res.ori <- data[,c(1:227)]
+#sub.res <- data[,c(2:227)]
 sub.res <- data[,c(2:227)]
 #sub.res.ori <- data 
 #sub.res <- data[,2:ncol(data)]	
