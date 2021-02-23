@@ -53,9 +53,9 @@ heatmap2 <- function(){
         data <- read.csv("heatmap_input8_e.txt",header=T,stringsAsFactors=F,sep="\t")
 
         data <- data[order(data$CMS, decreasing = F),]
-#             X  CMS SPIB BCL11A IKZF1 NFE2 BTG2 AKNA TCF7 MYB
-#20 PM.AS.0012.T CMS1    0      0     0    0    0    0    0   1
-#30 PM.PS.0024.T CMS1    0      1     0    0    0    0    0   1
+#             X  CMS gene1 gene2 gene3 gene4 gene5 
+#20 sample1 CMS1    0      0     0    0    0  
+#30 sample2 CMS1    0      1     0    0    0  
         sub.res.ori <- data
         sub.res <- data[,c(3:length(data))]
         rownames(sub.res) <- sub.res.ori[,1]
@@ -72,10 +72,10 @@ heatmap2 <- function(){
 #row.names(my_sample_col) <- colnames(data_subset)
 
 	my_gene <- data.frame( 
-		c(rep("AST5",4), rep("AST10",4)), 
+		c(rep("group1",4), rep("group2",4)), 
 		row.names=rownames(data_subset))
 	colnames(my_gene) <- c("cluster")
-#my_gene_col <- data.frame(cluster = rep(c("AST5","AST10"),c(4,4)))
+#my_gene_col <- data.frame(cluster = rep(c("group1","group2"),c(4,4)))
 #rownames(my_gene_col) <- rownames(data_subset)
 
 	my_color = list( 
@@ -88,8 +88,8 @@ heatmap2 <- function(){
 		annotation_row = my_gene, annotation_col = my_sample, 
 		color = cols, annotation_colors=my_color)
 }
-zscore()	#./heatmap.r 1_Raw_siNC_LPS_siNC_deg_heatmap.txt 1_Raw_siNC_LPS_siNC_deg_heatmap_Zscore.txt
-heatmap()	#./heatmap.r 1_Raw_siNC_LPS_siNC_deg_heatmap_Zscore.txt
+zscore()	#./heatmap.r 1_deg_heatmap.txt 1_deg_heatmap_Zscore.txt
+heatmap()	#./heatmap.r 1_deg_heatmap_Zscore.txt
 heatmap2()	#./heatmap.r heatmap_input8_e.txt
 
 #https://davetang.org/muse/2018/05/15/making-a-heatmap-in-r-with-the-pheatmap-package/
