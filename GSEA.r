@@ -6,7 +6,7 @@ source("GSEA_sub.r")
 # Input: Expression data 1st column gene symbol.
 #install.packages('xlsx')
 library(xlsx)
-fileXlsx<-read.xlsx2('RAW.xlsx',header=T,sheetIndex=1)
+fileXlsx<-read.xlsx2('RAW_TPM.xlsx',header=T,sheetIndex=1)
 fileXlsx <- as.data.frame(fileXlsx,stringsAsFactors=F)
 
 #Generating sampleinfo data for cls file
@@ -14,20 +14,16 @@ Sample <- as.data.frame(colnames(fileXlsx)[-1],stringsAsFactor=F)
 names(Sample) <- "SampleID"
 
 Raw_siNC <- as.character(Sample$SampleID[grepl("Raw_siNC_1",Sample$SampleID)])
-Raw_siMix <- as.character(Sample$SampleID[grepl("Raw_siMix_2",Sample$SampleID)])
 LPS_siNC <- as.character(Sample$SampleID[grepl("LPS_siNC_3",Sample$SampleID)])
-LPS_siMix <- as.character(Sample$SampleID[grepl("LPS_siMix",Sample$SampleID)])
+#LPS_siMix <- as.character(Sample$SampleID[grepl("LPS_siMix",Sample$SampleID)])
 
 # Case vs. Control
 subtype1 = list('LPS_siNC'=LPS_siNC,'Raw_siNC'=Raw_siNC)
-subtype2 = list('LPS_siMix'=LPS_siMix,'Raw_siMix'=Raw_siMix)
-subtype3 = list('LPS_siMix'=LPS_siMix,'Raw_siNC'=Raw_siNC)
-subtype4 = list('LPS_siNC'=LPS_siNC,'Raw_siMix'=Raw_siMix)
-subtype5 = list('Raw_siMix'=Raw_siMix,'Raw_siNC'=Raw_siNC)
-subtype6 = list('LPS_siMix'=LPS_siMix,'LPS_siNC'=LPS_siNC)
+#subtype3 = list('LPS_siMix'=LPS_siMix,'Raw_siNC'=Raw_siNC)
+#subtype6 = list('LPS_siMix'=LPS_siMix,'LPS_siNC'=LPS_siNC)
 
 #Make CLS file
-for (i in seq(6)){
+for (i in seq(3)){
 	cls_make <- get(paste('subtype',i,sep=''))
 	cls_maker(input_list = cls_make,file_export = paste('P',i,'_GSEA.cls',sep=''))	
 }
