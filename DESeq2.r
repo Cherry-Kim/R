@@ -66,3 +66,23 @@ G1 <-  substr(colnames(data[3:3]),1,nchar(colnames(data[3:3]))-12)
 G2 <-  substr(colnames(data[6:6]),1,nchar(colnames(data[6:6]))-12)
 write.csv(dds_results, file=paste0("DESeq2.results.",G1,":",G2,".csv"), quote=F)
 write.csv(df, file=paste0("DESeq2.results.",G1,":",G2,".csv"), quote=F)
+
+#############################
+#Ensemble ID -> Symbol
+annot <- function(){
+        library('biomaRt')
+        df <- read.table( "DESeq2_results.csv",  sep=",", header=T, stringsAsFactor=F)
+        mart <- useDataset("hsapiens_gene_ensembl", useMart("ensembl"))
+        #for (i in 1:length(df$X)){     
+        #df$X[i] <- unlist(strsplit(df$X[i], fixed=TRUE, split="."))[1]
+        #}
+
+        genes <- df$X
+        G_list <- getBM(filters= "ensembl_gene_id", attributes= c("ensembl_gene_id","hgnc_symbol", "description"),values=genes,mart= mart)
+        df$hgnc_symbol = ""
+        df["hgnc_symbol"] = lapply("hgnc_symbol", function(x) G_list[[x]][match(df$X, G_list$ensembl_gene_id)])
+        write.table(df, "DESeq2_results_symbol.txt", col.names=NA, row.names=T, quote=F,sep='\t')
+
+}
+annot()
+
