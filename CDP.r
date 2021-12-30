@@ -4,7 +4,7 @@ CDP_VOLCANO <- function(
         library(tidyverse)
         
         a <- read.table('integrated_results.txt', sep='\t', header = T)
-        Index	TF Symbol	Motif P-value	Motif Displacement (MD) score	Differetial expression P-value	log2FC (RNA-seq)	Z.Motif	Z.RNA	Avg.Z	Combined P-value (Motif+RNA)	Rank
+        Index	TF Symbol	Motif P-value	Motif Displacement score	Differetial expression P-value	log2FC(RNA-seq)	Z.Motif	Z.RNA	Avg.Z	Combined P-value(Motif+RNA)	Rank
         13	TF1	1.16E-07	-0.133	2.12E-300	6.46391011	5.170965929	37.02676866	29.83830428   1
         14	TF2	8.14E-06	0.1	3.41E-86	3.23987677	4.310711716	19.64167474	16.93689489   2
 
