@@ -33,6 +33,9 @@ DESeq2 <- function(
         sampleTable <- data.frame(sampleNames = sampleNames, sampleGroup = sampleGroup)
 
         dds <- DESeqDataSetFromMatrix(countData = round(txi.rsem$counts), colData = sampleTable, design = ~ sampleGroup)
+        
+        dds$sampleGroup <- relevel(dds$sampleGroup, ref = "untreated")
+        
         dds <- DESeq(dds)
         dds_results <- results(dds)     #res <- results(dds, pAdjustMethod="BH")
         write.csv(dds_results, file="DESeq2_results.csv")
