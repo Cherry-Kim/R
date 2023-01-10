@@ -22,7 +22,25 @@ for (i in 1:length(res.list)){
 	dev.off()
 }
 
-###########################################
-dat <- read.table("plot_input2.txt", header=T)
-compare_means(TPM ~ Tissue,  data = dat, group.by="GENE", method = "t.test", paired=T)
+STEP1_BOXPLOT <- function(
+        ){
+        library(ggplot2)
+        library(ggpubr)
+        file_list = dir(pattern="*input.txt")
+        for (i in 1:length(file_list)){
+                data <- read.csv(file_list[i], header=T, stringsAsFactors=F, sep='\t')
+                sample = unlist(strsplit(file_list[i], split='_'))[1]
+                print(sample)
+                head(data,2)
+
+                png(paste0("DDX3Y_",sample,".png"), width=800, height=1000,res=200)
+                h <- ggboxplot(data, x = "Tissue", y = "X1", color = "Tissue", add = "jitter", legend = "right", ylim=c(0,100)) + labs(title="gene1", x="", y = "Methylation (%)")+theme(plot.title = element_text(hjust = 0.5,size=22,color='purple',face="bold"))+font("xlab", size = 18)+font("ylab", size = 18)
+                a <- h + stat_compare_means(method = "wilcox.test", size =8)
+                print(a)
+
+                #a <- h + stat_compare_means(method = "wilcox.test",paired = FALSE)
+                #a <- h + stat_compare_means(method = "t.test",paired = FALSE)
+                #a <- h + stat_compare_means(aes(label = ..p.signif..), method = "wilcox.test") #****
+                dev.off()
+}
 
