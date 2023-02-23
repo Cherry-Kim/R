@@ -2,6 +2,8 @@ annoPie <- function(){
         library(ggplot2)
         library(dplyr)
         a <- read.csv('input.csv', header=T, sep=',')
+        #Feature,s1,s2,s3
+#Promoter (<=1kb),42.4418605,44.732577,80
         data <- data.frame( group=a$Feature, value=a$s1)
         data <- data %>% mutate(group2 = paste0(group, " (", round(value,2),"%)"))
         col <- c("#99CCFF","#0066CC","#99FF99", "green", "#FF9999", "#FF3333", "#FFB226", "#FF9933", "#E5CCFF","#9933FF","#FFFF99")
@@ -14,6 +16,11 @@ annoPie <- function(){
 
 bar <- function(){
         a <- read.csv('input22.csv', header=T, sep='\t')
+        #category        sample  value
+#Promoter (<=1kb)        s1        80
+#Promoter (2-3kb)        s1        6.666667
+#Promoter (<=1kb)        s2        80
+#Promoter (2-3kb)        s3        6.666667
         a$category <- factor(a$category, 
             levels=rev(c("Promoter (<=1kb)","Promoter (1-2kb)","Promoter (2-3kb)","5' UTR","3' UTR","1st Exon","Other Exon","1st Intron","Other Intron","Downstream (<=300)","Distal Intergenic")))
         levels(a$category)
