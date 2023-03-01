@@ -10,12 +10,12 @@ Bar <- function(){
         levels(df$Symbol)
 
         #Data Visualization with ggplot2
-        ggplot(df, aes(x =Symbol, y =Basal_cor), width = 0.6) +geom_col(fill = "gray70") 
-            +ggtitle("Basal")+coord_flip()
+        ggplot(df, aes(x =Symbol, y =cor), width = 0.6) +geom_col(fill = "gray70") 
+            +ggtitle("gl")+coord_flip()
             +theme(text = element_text(size = 20))
             + theme(axis.text = element_text(size = 20,face = "bold")) 
             + theme(plot.title = element_text(size = 22,face = "bold")) 
             +theme(panel.background = element_rect(fill = "white"), axis.line.y.left = element_line(color = "black"))
-            + ylim(0,1)+xlab("")+ylab("Correlation Coefficient")
-            +geom_text(aes(label = round(Basal_cor,2)),face = "bold",size = 7)
+            + ylim(0,1)+xlab("")+ylab("value")
+            +geom_text(aes(label = round(cor,2)),face = "bold",size = 7)
 }
