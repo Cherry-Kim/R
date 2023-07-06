@@ -24,6 +24,7 @@
         ggplot(merged_data, aes(x = x, y = y, color = group, shape = group)) +
           geom_point(size = 2) +
           labs(x = "X", y = "Y", color = "group") +
-          ggtitle("test") + theme(plot.title = element_text(size = 36,face = "bold",hjust = 0.5, color="purple")) +          theme(axis.text = element_text(size = 20), legend.text = element_text(size = 20, face = "bold")) +
+          ggtitle("test") + theme(plot.title = element_text(size = 36,face = "bold",hjust = 0.5, color="purple")) +   
+          theme(axis.text = element_text(size = 20), legend.text = element_text(size = 20, face = "bold")) +
           theme(axis.title.x = element_text(size = 38,face = "bold")) +   
           theme(axis.title.y = element_text(size =33,face = "bold"))   
