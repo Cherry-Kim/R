@@ -30,3 +30,26 @@ Bar <- function(){
              +xlab("")+ylab("Correlation Coefficient")+geom_text(aes(label = round(LumA_cor,2)),face = "bold",size = 12)
         
 }
+
+library(ggplot2)
+data <- data.frame(type = c("Inversions","Deletions", "Duplications","Insertions"),
+                   Value = c(25,23,19,10))
+
+#Keep in mind that we have reversed the ordering since {ggplot2} plots factors from bottom to top when being mapped to y.
+data$type <- factor(data$type, levels = c("Insertions","Duplications","Deletions","Inversions"))
+
+ggplot(data, aes(y = type, x = Value, fill = type)) +
+  geom_col() +
+  geom_text(aes(label = Value),size=4, hjust = 0, nudge_x = .5) +
+   ## make sure labels doesn't get cut, part 1
+  coord_cartesian(clip = "off") +
+   ## reduce spacing between labels and bars
+  scale_x_continuous(expand = c(.01, .01)) +
+  theme_void() +
+  theme(axis.text.y = element_text(size = 14, hjust = 1, family = "Fira Sans"),
+        ## make sure labels doesn't get cut, part 2
+    plot.margin = margin(15, 30, 15, 15))
+
+
+
+
