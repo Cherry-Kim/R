@@ -24,16 +24,18 @@ zscore <- function(){
 	}
 
 heatmap <- function(){
-	args <- commandArgs(trailingOnly=TRUE)
-
-	input_file_name <- args[1]
-
-	data <- read.csv(input_file_name, header=T, stringsAsFactors=F, sep=",")
-	#data <- read.csv(input_file_name, header=T, stringsAsFactors=F, sep="\t")
-
+	library('pheatmap')
+        data <- read.table('Liver_top100.txt', header=T, stringsAsFactors=F, sep="\t")
+	head(data,3)
+        #             X    tp9.5 tp10.5 tp11.5 tp12.5 
+        #1        Nkx1-1 7.947956     NA     NA     NA     
+	
 	sub.res.ori <- data
 	sub.res <- data[,2:ncol(data)]
 	rownames(sub.res) <- sub.res.ori[,1]
+
+	pheatmap(sub.res, fontsize = 20, cluster_row = F, cluster_cols = F)
+
 	
 	my_sample_col <- data.frame(Group = rep(c("Raw_siNC","LPS_siNC"),c(2,2)))
 	rownames(my_sample_col) <- colnames(sub.res)
