@@ -34,7 +34,7 @@ heatmap <- function(){
 	sub.res <- data[,2:ncol(data)]
 	rownames(sub.res) <- sub.res.ori[,1]
 
-	pheatmap(sub.res, fontsize = 10, cluster_row = F, cluster_cols = F, angle_col = 315, main="Pancreas", cellwidth = 10
+	pheatmap(sub.res, fontsize = 10, cluster_row = F, cluster_cols = F, angle_col = 315, main="Pancreas", cellwidth = 10)
 
 	
 	my_sample_col <- data.frame(Group = rep(c("Raw_siNC","LPS_siNC"),c(2,2)))
