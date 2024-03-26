@@ -13,7 +13,7 @@ annot <- read.csv('dannot.csv', header=T)
 head(dd[,1:3])
 #     NM_000662 NM_001168 NM_004323
 #sample1   -0.61397 -0.044513 -0.069973
-#sa2ple1    0.23311 -0.021574  0.166060
+#sample2    0.23311 -0.021574  0.166060
 head(annot[,1:3])
 #               X          probe EntrezGene.ID
 #1 Contig45645_RC Contig45645_RC         64388
