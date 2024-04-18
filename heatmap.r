@@ -44,6 +44,11 @@ heatmap <- function(){
 	#"dark red", "coral", "orange red", "deep sky blue", "dodger blue", "dark golden rod", "golden rod", "yellow green", "olive drab"
 
 	png("heatmap.png", width=4000, height=4000, res=300)
+	pheatmap(sub.res, cluster_rows=T, cluster_cols=T,
+              clustering_distance_rows = "euclidean", clustering_distance_cols = "euclidean", fontsize_col = 15,fontsize_row = 15,  clustering_method = "average",
+              annotation_col = my_sample_col, annotation_colors=colors, angle_col = 45)
+
+
 	pheatmap(t(sub.res), cluster_rows=T, cluster_cols=T,
               clustering_distance_rows = "euclidean", clustering_distance_cols = "euclidean", fontsize_col = 11, clustering_method = "average", 
 	      annotation_row = my_sample_col, annotation_colors=colors)
