@@ -101,3 +101,12 @@ heatmap2()	#./heatmap.r heatmap_input8_e.txt
 
 #https://davetang.org/muse/2018/05/15/making-a-heatmap-in-r-with-the-pheatmap-package/
 #https://www.biostars.org/p/351551/
+
+
+#https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/
+        library(ComplexHeatmap)
+col = list(TNBC = c("TNBC_NR" = "coral", "TNBC" = "deep sky blue"),
+            Signature = c("Basal" = "green", "HER2-E" = "olive drab"))
+ha <- HeatmapAnnotation(
+          TNBC = my_sample_col$Group, Signature = my_sample_col$Group2,   col = col)
+pheatmap(sub.res,  top_annotation = ha, color = colorRampPalette(c("violet", "white", "yellow"))(100), breaks = seq(-2, 2, length.out = 101),  cluster_rows=T, cluster_cols=F,  clustering_distance_rows = "euclidean", clustering_distance_cols = "euclidean", fontsize_col = 15, fontsize_row = 15, clustering_method = "average",  cellwidth = 15, cellheight = 15)
